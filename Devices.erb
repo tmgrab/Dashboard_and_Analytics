@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Title here -->
+  <title>Pricing Analytics Dashboard for CIGNA HealthCare</title>
+  <!-- Description, Keywords and Author -->
+  <meta name="description" content="Your description">
+  <meta name="keywords" content="Your,Keywords">
+  <meta name="author" content="ResponsiveWebInc">
+
+
+  <meta name="HealthCare" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- Styles -->
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Animate css -->
+  <link href="css/animate.min.css" rel="stylesheet">
+  <!-- Gritter -->
+  <link href="css/jquery.gritter.css" rel="stylesheet">
+  <!-- Calendar -->
+  <link href="css/fullcalendar.css" rel="stylesheet">
+  <!-- Bootstrap toggable -->
+  <link href="css/bootstrap-switch.css" rel="stylesheet">
+  <!-- Date and Time picker -->
+  <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+  <!-- Star rating -->
+  <link href="css/rateit.css" rel="stylesheet">
+  <!-- Star rating -->
+  <link href="css/jquery.cleditor.css" rel="stylesheet">
+  <!-- jQuery UI -->
+  <link href="css/jquery-ui.css" rel="stylesheet">
+  <!-- prettyPhoto -->
+  <link href="css/prettyPhoto.css" rel="stylesheet">
+  <!-- Font awesome CSS -->
+  <link href="css/font-awesome.min.css" rel="stylesheet">   
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="#">
+
+
+  <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
+  <link rel="stylesheet" type="text/css" href="css/daterangepicker-bs3.css" />
+  <link href="css/users.css" rel="stylesheet">
+
+
+
+
+
+
+</head>
+
+
+<body>
+
+
+
+
+  <!-- Logo & Navigation starts -->
+
+
+  <div class="header">
+    <div class="container">
+      <div class="row">
+       <div class="col-md-6">
+        <!-- Logo -->
+        <div class="logo">
+          <h1 class = "span6"><a href="/">Pika Energy Dashboard</a></h1>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+        <div class="navbar navbar-inverse" role="banner">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+              <span>Menu</span>
+            </button>
+          </div>
+
+
+          <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+            <ul class="nav navbar-nav">
+
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Users <span class="label label-primary">5</span> <b class="caret"></b></a>
+                <!-- Big dropdown menu -->
+                <ul class="dropdown-menu dropdown-big animated fadeInUp">
+                  <!-- Dropdown menu header -->
+                  <div class="dropdown-head">
+                   <span class="dropdown-title">Members</span>
+                 </div>
+                 <!-- Dropdown menu body -->
+                 <div class="dropdown-body">
+                   <li><i class="fa fa-user color"></i> <a href="#">Cape Elizabeth</a></li>
+                   <li><i class="fa fa-user color"></i> <a href="#">Colby</a></li>
+                   <li><i class="fa fa-user color"></i> <a href="#">Hedden</a></li>
+                   <li><i class="fa fa-user color"></i> <a href="#">South</a></li>
+                 </div>
+                 <!-- Dropdown menu footer -->
+                 <div class="dropdown-foot text-center">
+                   <a href="#">All Members</a>
+                 </div>
+               </ul>
+             </li>
+             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+              <ul class="dropdown-menu animated fadeInUp">
+                <li><a href="Pika_profile.html">Profile</a></li>
+                <li><a href="Pika_login.html">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+<!-- Logo & Navigation ends -->
+
+
+<!-- Page content -->
+<form class="form-horizontal" id = "criteria" >
+
+
+  <div class="page-content blocky">
+   <div class="container">
+    <div class="sidebar-dropdown"><a href="#">MENU</a></div>
+    <div class="sidey">
+     <div class="side-cont">
+      <ul class="nav">
+        <!-- Main menu -->
+        <li ><a href="/users"><i class="fa fa-lightbulb-o"></i> Power and Energy</a></li>
+        <li class="current"><a href="/devices"><i class="fa fa-cogs"></i> Devices</a></li>
+        <li ><a href="top.html"><i class="fa fa-sort-amount-desc"></i> TOP 10 users</a></li>
+        <li ><a href="Pika_profile.html"><i class="fa fa-male"></i>My Profile</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="mainy">
+    <!-- Page title -->
+    <div class="page-title">
+      <h2><i class="fa fa-cogs color"></i> Devices <small>Hourly average of generated power</small></h2> 
+      <hr />
+    </div>
+    <!-- Page title -->
+
+
+    <div class="row">
+
+
+      <div class="col-md-12">
+       <div class="awidget full-width">
+
+
+
+
+        <div class="awidget-head">
+         <h3>Date Range</h3>
+         <div class="controls" >
+          <div class="input-prepend input-group">
+            <span class="add-on input-group-addon"><i class="fa fa-calendar color"></i>
+            </span>
+            <input type="hidden" name="dateMin" value = "<%= (@date_max).strftime('%d-%m-%Y')%>"/>
+            <input type="hidden" name="dateMax" value = "<%= (@date_max+1.month-1).strftime('%d-%m-%Y')%>"/>
+            <input type="text" style="width: 210px" name="reservation" id="reservationtime" class="form-control" class="span4" value = "<%= (@date_max).strftime('%m-%Y')+' - ' + (@date_max+1.month-1).strftime('%m-%Y') %>"/>
+          </div>
+        </div>
+
+
+      </div> 
+
+
+
+
+
+
+
+
+      <div class="awidget-head">
+       <div id="chartLegend_Power" align = "right"></div>
+       <h3>Solar Panel</h3>
+     </div>
+     <div class="awidget-body">
+      <div id="chartLegend_Power" align = "right"></div>
+      <div class="chart-container">
+        <div id="bar-chart_solar" class="chart-placeholder"></div>
+      </div>
+    </div>
+
+
+    <div class="awidget-head">
+     <h3>Wind Turbine</h3>
+   </div>
+   <div class="awidget-body">
+     <div class="chart-container">
+      <div id="bar-chart_wind" class="chart-placeholder"></div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+
+</div>
+</div>
+</div>                       
+</div>
+</form>
+
+
+<!-- Footer starts -->
+<footer>
+  <div class="container">
+
+
+    <div class="copy text-center">
+     Copyright 2014 &copy; - <aCigna HealthCare/a>
+   </div>
+
+
+ </div>
+</footer>
+<!-- Footer ends -->
+
+
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span> 
+
+
+<!-- Javascript files -->
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>  
+<!-- jQuery UI -->
+<script src="js/jquery-ui-1.10.2.custom.min.js"></script>     
+<!-- jQuery Peity -->
+<script src="js/peity.js"></script>  
+<!-- Calendar -->
+<script src="js/fullcalendar.min.js"></script>  
+<!-- jQuery Star rating -->
+<script src="js/jquery.rateit.min.js"></script>
+
+
+
+
+<!-- jQuery flot -->
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
+<script src="js/jquery.flot.js"></script>     
+<script src="js/jquery.flot.pie.js"></script>
+<script src="js/jquery.flot.stack.js"></script>
+<script src="js/jquery.flot.resize.js"></script>
+
+
+
+
+
+
+
+
+<!-- CLEditor -->
+<script src="js/jquery.cleditor.min.js"></script> 
+<!-- Date and Time picker -->
+<script src="js/bootstrap-datetimepicker.min.js"></script>  
+<!-- jQuery Toggable -->
+<script src="js/bootstrap-switch.min.js"></script>
+<!-- Respond JS for IE8 -->
+<script src="js/respond.min.js"></script>
+<!-- HTML5 Support for IE -->
+<script src="js/html5shiv.js"></script>
+<!-- Custom JS -->
+<script type="text/javascript" src="js/moment.js"></script>
+<script type="text/javascript" src="js/daterangepicker.js"></script>
+<script type="text/javascript" src="/js/jquery.flot.time.js"></script>
+<script type="text/javascript" src="/js/jquery.flot.categories.js"></script>
+<script type="text/javascript" src="/js/jquery.flot.axislabels.js"></script>
+
+
+<script type="text/javascript" src="/js/devices.js"></script>
+
+
+
+
+<!-- Javascript for graph -->
+
+
+<script type="text/javascript">
+
+
+//  Javascript for date time range 
+$(document).ready(function() {
+  submitCriteria()
+  $('#reservationtime').daterangepicker({
+    timePicker: false,
+    timePicker12Hour: false,
+    showDropdowns: true,
+    ranges: {
+
+
+     'This Month': [moment().startOf('month'), moment().endOf('month')],
+     'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+   },
+   minDate: new Date(<%= (@date_min).year %>, <%= (@date_min).month %>),
+   maxDate: new Date(<%= (@date_max+1.month).year %>, <%= (@date_max+1.month).month %>),
+   format: 'MM-YYYY '
+ }, function(start, end) {
+  $('#reservationtime span').html(start.toString('MM-YYYY') + ' - ' + end.toString('MM-YYYY'));
+  $('input[name=dateMin]').val(start.toString('MM-YYYY'));
+  $('input[name=dateMax]').val(end.toString('MM-YYYY '));
+  submitCriteria()
+
+
+});
+});
+
+
+
+
+/*$(document).ready(function () {
+submitCriteria();
+
+
+$(".stackControls input").click(function (e) {
+e.preventDefault();
+stack = $(this).val() == "With stacking" ? true : null;
+plotWithOptions(data);
+});
+$(".graphControls input").click(function (e) {
+e.preventDefault();
+bars = $(this).val().indexOf("Bars") != -1;
+lines = $(this).val().indexOf("Lines") != -1;
+steps = $(this).val().indexOf("steps") != -1;
+plotWithOptions(data);
+});
+
+
+});*/
+
+
+
+
+</script>
+
+
+</body> 
+</html>
